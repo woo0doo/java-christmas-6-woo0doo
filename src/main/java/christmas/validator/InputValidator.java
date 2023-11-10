@@ -17,7 +17,7 @@ public class InputValidator {
     }
 
     private boolean isNotDigitOrNotCorrectRangeOfDate(String inputDateOfVisit) {
-        if (Pattern.compile(DIGIT_VALIDATE_REGEX).matcher(inputDateOfVisit).matches()) {
+        if (!Pattern.compile(DIGIT_VALIDATE_REGEX).matcher(inputDateOfVisit).matches()) {
             return true;
         }
 
