@@ -17,6 +17,10 @@ public class Person {
         return menuAndCount;
     }
 
+    public int getTotalOrderPriceBeforeDiscount() {
+        return totalOrderPriceBeforeDiscount;
+    }
+
     public void setMenuAndCount(Map<Menu, Integer> menuAndCount) {
         this.menuAndCount = menuAndCount;
     }
