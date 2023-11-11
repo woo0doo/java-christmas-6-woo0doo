@@ -9,4 +9,8 @@ public class ValidateService {
     public void validateInputDateOfVisit(String inputDateOfVisit) {
         inputValidator.validateDateOfVisit(inputDateOfVisit);
     }
+
+    public void validateInputMenusAndCounts(String inputMenusAndCounts) {
+        inputValidator.validateMenusAndCounts(inputMenusAndCounts);
+    }
 }
