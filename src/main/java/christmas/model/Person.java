@@ -13,6 +13,10 @@ public class Person {
 
     private static final int MAX_COUNT_SIZE = 20;
 
+    public Map<Menu, Integer> getMenuAndCount() {
+        return menuAndCount;
+    }
+
     public void setMenuAndCount(Map<Menu, Integer> menuAndCount) {
         this.menuAndCount = menuAndCount;
     }
