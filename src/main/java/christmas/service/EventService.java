@@ -40,8 +40,18 @@ public class EventService {
         return person.getMenuAndCount();
     }
 
-    public int getTotalOrderPriceBeforeDiscount() {
+    public String getStringCommaTotalOrderPriceBeforeDiscount() {
+        int totalOrderPriceBeforeDiscount = getTotalOrderPriceBeforeDiscount();
+        return convertIntTotalPriceToStringCommaPrice(totalOrderPriceBeforeDiscount);
+    }
+
+    private int getTotalOrderPriceBeforeDiscount() {
         return person.getTotalOrderPriceBeforeDiscount();
+    }
+
+    private String convertIntTotalPriceToStringCommaPrice(int totalOrderPriceBeforeDiscount) {
+        return String.format("%,d", totalOrderPriceBeforeDiscount);
+
     }
 
     private Map<Menu, Integer> resolveInputMenusAndCounts(String inputMenusAndCounts) {
