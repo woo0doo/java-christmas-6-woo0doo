@@ -32,6 +32,14 @@ public class EventService {
         menus = new ArrayList<>();
     }
 
+    public List<Menu> getMenus() {
+        return menus;
+    }
+
+    public Map<Menu, Integer> getPersonMenusAndCounts() {
+        return person.getMenuAndCount();
+    }
+
     private Map<Menu, Integer> resolveInputMenusAndCounts(String inputMenusAndCounts) {
         Map<Menu, Integer> menusAndCounts = new HashMap<>();
         List<String> separateMenus = separateMenus(inputMenusAndCounts);
