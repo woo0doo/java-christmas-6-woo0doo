@@ -28,6 +28,10 @@ public class EventService {
         setInitPerson(totalCount, menusAndCounts, totalOrderPriceBeforeDiscount);
     }
 
+    public void initMenus() {
+        menus = new ArrayList<>();
+    }
+
     private Map<Menu, Integer> resolveInputMenusAndCounts(String inputMenusAndCounts) {
         Map<Menu, Integer> menusAndCounts = new HashMap<>();
         List<String> separateMenus = separateMenus(inputMenusAndCounts);
@@ -61,7 +65,7 @@ public class EventService {
     }
 
     private void checkContainBesidesBeverage(Course course) {
-        if (course.equals(Course.BEVERAGE))
+        if (!course.equals(Course.BEVERAGE))
             isNotOnlyBeverage = true;
     }
 
