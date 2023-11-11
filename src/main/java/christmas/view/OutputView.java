@@ -14,6 +14,8 @@ public class OutputView {
     private static final String BLANK_LINE = "";
     private static final String ORDER_MENU_MESSAGE = "<주문 메뉴>";
     private static final String ORDER_MENU_AND_COUNT = "%s %d개\n";
+    private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT_MESSAGE = "<할인 전 총주문 금액>";
+    private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT = "%s원\n";
 
     public void printStartMessage() {
         printIntroduceMessage();
@@ -34,7 +36,13 @@ public class OutputView {
         for (Menu menu : menus) {
             System.out.printf(ORDER_MENU_AND_COUNT, menu.getMenuKoreaName(), menusAndCounts.get(menu));
         }
-        System.out.println(ORDER_MENU_MESSAGE);
+        printBlankLine();
+    }
+
+    public void printTotalOrderPriceBeforeDiscount(String stringCommaTotalOrderPriceBeforeDiscount) {
+        System.out.println(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT_MESSAGE);
+        System.out.printf(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT, stringCommaTotalOrderPriceBeforeDiscount);
+        printBlankLine();
     }
 
     private void printBlankLine() {
