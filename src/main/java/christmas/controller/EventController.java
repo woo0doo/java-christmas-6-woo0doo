@@ -25,6 +25,18 @@ public class EventController {
         printEventBenefitPreviewMessage();
         printOrderMenus();
         printTotalOrderPriceBeforeDiscount();
+        printGiftMenu();
+        printDiscountDetail();
+    }
+
+    private void printDiscountDetail() {
+        List<String> discountDetails = eventService.getDiscountDetails();
+        outputView.printDiscountDetail(discountDetails);
+    }
+
+    private void printGiftMenu() {
+        String giftMenuMessage = eventService.getGiftMenu();
+        outputView.printGiftMenu(giftMenuMessage);
     }
 
     private void printTotalOrderPriceBeforeDiscount() {
@@ -76,7 +88,7 @@ public class EventController {
         try {
             inputDateOfVisit = inputView.inputDateOfVisit();
             validateService.validateInputDateOfVisit(inputDateOfVisit);
-
+            eventService.setDateOfVisit(inputDateOfVisit);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             inputDateOfVisit();
