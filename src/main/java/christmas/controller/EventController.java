@@ -1,5 +1,6 @@
 package christmas.controller;
 
+import christmas.service.EventService;
 import christmas.service.ValidateService;
 import christmas.view.InputView;
 import christmas.view.OutputView;
@@ -9,6 +10,7 @@ public class EventController {
     private final InputView inputView = new InputView();
     private final OutputView outputView = new OutputView();
     private final ValidateService validateService = new ValidateService();
+    private final EventService eventService = new EventService();
 
     private String inputDateOfVisit;
     private String inputMenusAndCounts;
@@ -20,16 +22,18 @@ public class EventController {
 
     private void MenusAndCountsProcess() {
         printAskOrderMenusAndCounts();
-        inputOrdersAndCounts();
+        inputOrdersAndCountsAndInitEvent();
     }
 
-    private void inputOrdersAndCounts() {
+    private void inputOrdersAndCountsAndInitEvent() {
         try {
             inputMenusAndCounts = inputView.inputMenusAndCounts();
             validateService.validateInputMenusAndCounts(inputMenusAndCounts);
+            eventService.initEvent(inputMenusAndCounts);
         } catch (IllegalArgumentException e) {
+            eventService.initMenus();
             System.out.println(e.getMessage());
-            inputOrdersAndCounts();
+            inputOrdersAndCountsAndInitEvent();
         }
     }
 
