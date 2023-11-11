@@ -24,6 +24,12 @@ public class EventController {
         MenusAndCountsProcess();
         printEventBenefitPreviewMessage();
         printOrderMenus();
+        printTotalOrderPriceBeforeDiscount();
+    }
+
+    private void printTotalOrderPriceBeforeDiscount() {
+        String stringCommaTotalOrderPriceBeforeDiscount = eventService.getStringCommaTotalOrderPriceBeforeDiscount();
+        outputView.printTotalOrderPriceBeforeDiscount(stringCommaTotalOrderPriceBeforeDiscount);
     }
 
     private void printOrderMenus() {
