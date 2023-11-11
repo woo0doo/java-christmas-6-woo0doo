@@ -7,11 +7,18 @@ import static christmas.constant.ErrorConstant.OVER_MAX_COUNT_SIZE_ERROR_MESSAGE
 
 public class Person {
 
+    private int dateOfVisit;
     Map<Menu, Integer> menuAndCount;
     int totalCount;
     int totalOrderPriceBeforeDiscount;
+    boolean isPresentedChampagne;
+    int totalDiscountPrice;
 
     private static final int MAX_COUNT_SIZE = 20;
+
+    public int getDateOfVisit() {
+        return dateOfVisit;
+    }
 
     public Map<Menu, Integer> getMenuAndCount() {
         return menuAndCount;
@@ -19,6 +26,14 @@ public class Person {
 
     public int getTotalOrderPriceBeforeDiscount() {
         return totalOrderPriceBeforeDiscount;
+    }
+
+    public boolean getIsPresentedChampagne() {
+        return isPresentedChampagne;
+    }
+
+    public void setDateOfVisit(int dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
     }
 
     public void setMenuAndCount(Map<Menu, Integer> menuAndCount) {
@@ -32,6 +47,14 @@ public class Person {
 
     public void setTotalOrderPriceBeforeDiscount(int totalOrderPriceBeforeDiscount) {
         this.totalOrderPriceBeforeDiscount = totalOrderPriceBeforeDiscount;
+    }
+
+    public void setPresentedChampagne(boolean presentedChampagne) {
+        isPresentedChampagne = presentedChampagne;
+    }
+
+    public void setTotalDiscountPrice(int totalDiscountPrice) {
+        this.totalDiscountPrice = totalDiscountPrice;
     }
 
     private void validateTotalCountOverMaxCount(int totalCount) {
