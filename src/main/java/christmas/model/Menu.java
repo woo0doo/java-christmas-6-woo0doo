@@ -1,5 +1,7 @@
 package christmas.model;
 
+import static christmas.constant.ErrorConstant.ERROR_PREFIX;
+
 public enum Menu {
 
     BUTTON_MUSHROOM_SOUP(Course.APPETIZER, 6_000),
@@ -30,4 +32,22 @@ public enum Menu {
 
     private final Course course;
     private final int price;
+
+    private static final String VALIDATE_CORRECT_MENU_ERROR_MESSAGE = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
+
+    public static Menu StringToEnum(String menu) {
+        if (menu.equals("양송이수프")) return BUTTON_MUSHROOM_SOUP;
+        if (menu.equals("타파스")) return TAPAS;
+        if (menu.equals("시저샐러드")) return CAESAR_SALAD;
+        if (menu.equals("티본스테이크")) return T_BONE_STEAK;
+        if (menu.equals("바비큐립")) return BBQ_RIB;
+        if (menu.equals("해산물파스타")) return SEAFOOD_PASTA;
+        if (menu.equals("크리스마스파스타")) return CHRISTMAS_PASTA;
+        if (menu.equals("초코케이크")) return CHOCOLATE_CAKE;
+        if (menu.equals("아이스크림")) return ICECREAM;
+        if (menu.equals("제로콜라")) return ZERO_COKE;
+        if (menu.equals("레드와인")) return RED_WINE;
+        if (menu.equals("샴페인")) return CHAMPAGNE;
+        throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
+    }
 }
