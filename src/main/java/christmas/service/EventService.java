@@ -40,6 +40,10 @@ public class EventService {
         return person.getMenuAndCount();
     }
 
+    public int getTotalOrderPriceBeforeDiscount() {
+        return person.getTotalOrderPriceBeforeDiscount();
+    }
+
     private Map<Menu, Integer> resolveInputMenusAndCounts(String inputMenusAndCounts) {
         Map<Menu, Integer> menusAndCounts = new HashMap<>();
         List<String> separateMenus = separateMenus(inputMenusAndCounts);
