@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static christmas.constant.ErrorConstant.*;
+import static christmas.constant.NumberConstant.MAX_COUNT_SIZE;
 import static christmas.constant.ValidateConstant.isNotDigit;
+import static christmas.util.ConvertUtil.convertStringToInt;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
 
@@ -14,6 +16,7 @@ public class InputMenuAndCountValidator {
 
     boolean isNotOnlyBeverage = false;
     List<Menu> menus = new ArrayList<>();
+    int totalCount = 0;
 
     public void validateMenusAndCounts(String inputMenusAndCounts) {
         List<String> menusAndCounts = separateMenus(inputMenusAndCounts);
@@ -23,10 +26,18 @@ public class InputMenuAndCountValidator {
             checkDuplicateMenu(menus, menu);
             containBesidesBeverage(menu.getCourse());
             menus.add(menu);
-            if (isNotDigit(separateMenusAndCount.get(1)))
+            String inputCount = separateMenusAndCount.get(1);
+            if (isNotDigit(inputCount))
                 throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
+            addCount(inputCount);
         }
         checkNotOnlyBeverage(isNotOnlyBeverage);
+        checkTotalCountOverMaxCount(totalCount);
+    }
+
+    private void addCount(String inputCount) {
+        int count = convertStringToInt(inputCount);
+        totalCount += count;
     }
 
     private void checkNotOnlyBeverage(boolean isNotOnlyBeverage) {
@@ -47,5 +58,10 @@ public class InputMenuAndCountValidator {
     public void init() {
         this.isNotOnlyBeverage = false;
         this.menus = new ArrayList<>();
+    }
+
+    private void checkTotalCountOverMaxCount(int totalCount) {
+        if (totalCount > MAX_COUNT_SIZE)
+            throw new IllegalArgumentException(ERROR_PREFIX + OVER_MAX_COUNT_SIZE_ERROR_MESSAGE);
     }
 }
