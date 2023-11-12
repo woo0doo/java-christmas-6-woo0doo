@@ -27,6 +27,12 @@ public class EventController {
         printTotalOrderPriceBeforeDiscount();
         printGiftMenu();
         printDiscountDetail();
+        printTotalDiscountPrice();
+    }
+
+    private void printTotalDiscountPrice() {
+        String stringCommaTotalDiscountPrice = eventService.getStringCommaTotalDiscountPrice();
+        outputView.printTotalDiscountPrice(stringCommaTotalDiscountPrice);
     }
 
     private void printDiscountDetail() {
