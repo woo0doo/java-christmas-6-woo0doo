@@ -32,6 +32,10 @@ public class Person {
         return isPresentedChampagne;
     }
 
+    public int getTotalDiscountPrice() {
+        return totalDiscountPrice;
+    }
+
     public void setDateOfVisit(int dateOfVisit) {
         this.dateOfVisit = dateOfVisit;
     }
