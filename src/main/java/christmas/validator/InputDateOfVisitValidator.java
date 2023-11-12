@@ -7,10 +7,9 @@ import static christmas.util.ConvertUtil.convertStringToInt;
 
 public class InputDateOfVisitValidator {
 
-
-
     public void validateDateOfVisit(String inputDateOfVisit) {
-        checkNotDigit(inputDateOfVisit);
+        if (isNotDigit(inputDateOfVisit))
+            throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_DATE_OF_VISIT_ERROR_MESSAGE);
         checkNotCorrectRangeOfDate(inputDateOfVisit);
     }
 
@@ -19,5 +18,4 @@ public class InputDateOfVisitValidator {
         if (dateOfVisit < START_DATE_RANGE || dateOfVisit > END_DATE_RANGE)
             throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_DATE_OF_VISIT_ERROR_MESSAGE);
     }
-
 }
