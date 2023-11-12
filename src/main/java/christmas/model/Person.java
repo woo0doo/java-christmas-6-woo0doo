@@ -2,12 +2,8 @@ package christmas.model;
 
 import java.util.Map;
 
-import static christmas.constant.ErrorConstant.ERROR_PREFIX;
-import static christmas.constant.ErrorConstant.OVER_MAX_COUNT_SIZE_ERROR_MESSAGE;
-
 public class Person {
 
-    private static final int MAX_COUNT_SIZE = 20;
     Map<Menu, Integer> menuAndCount;
     int totalCount;
     int totalOrderPriceBeforeDiscount;
@@ -52,16 +48,10 @@ public class Person {
     }
 
     public void setTotalCount(int totalCount) {
-        validateTotalCountOverMaxCount(totalCount);
         this.totalCount = totalCount;
     }
 
     public void setPresentedChampagne(boolean presentedChampagne) {
         isPresentedChampagne = presentedChampagne;
-    }
-
-    private void validateTotalCountOverMaxCount(int totalCount) {
-        if (totalCount > MAX_COUNT_SIZE)
-            throw new IllegalArgumentException(ERROR_PREFIX + OVER_MAX_COUNT_SIZE_ERROR_MESSAGE);
     }
 }
