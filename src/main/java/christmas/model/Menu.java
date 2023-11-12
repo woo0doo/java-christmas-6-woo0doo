@@ -1,6 +1,7 @@
 package christmas.model;
 
 import static christmas.constant.ErrorConstant.ERROR_PREFIX;
+import static christmas.constant.ErrorConstant.VALIDATE_CORRECT_MENU_ERROR_MESSAGE;
 
 public enum Menu {
 
@@ -18,7 +19,6 @@ public enum Menu {
     RED_WINE("레드와인", Course.BEVERAGE, 60_000),
     CHAMPAGNE("샴페인", Course.BEVERAGE, 25_000);
 
-    private static final String VALIDATE_CORRECT_MENU_ERROR_MESSAGE = "유효하지 않은 주문입니다. 다시 입력해 주세요.";
     private final String menuKoreaName;
     private final Course course;
     private final int price;
