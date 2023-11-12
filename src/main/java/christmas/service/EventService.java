@@ -3,20 +3,24 @@ package christmas.service;
 import christmas.model.Menu;
 import christmas.model.Person;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static christmas.constant.NumberConstant.*;
+import static christmas.constant.NumberConstant.BASED_ON_OVER_PRICE_GIVE_GIFT_MENU;
 import static christmas.model.Badge.*;
 import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
-import static christmas.view.OutputView.*;
+import static christmas.view.OutputView.NO_GIFT_MESSAGE;
+import static christmas.view.OutputView.ONE_CHAMPAGNE_MESSAGE;
 
 public class EventService {
 
     private final Person person = new Person();
     int totalCount = 0;
-    private List<Menu> menus = new ArrayList<>();
+    private final List<Menu> menus = new ArrayList<>();
 
     public void initEvent(String inputMenusAndCounts) {
         Map<Menu, Integer> menusAndCounts = resolveInputMenusAndCounts(inputMenusAndCounts);
@@ -56,10 +60,10 @@ public class EventService {
         return convertIntPriceToStringCommaPrice(expectPaymentPrice);
     }
 
-    private int getExpectPaymentPrice()  {
+    private int getExpectPaymentPrice() {
         int totalOrderPriceBeforeDiscount = person.getTotalOrderPriceBeforeDiscount();
         int totalDiscountPrice = person.getTotalDiscountPrice();
-        return totalOrderPriceBeforeDiscount-totalDiscountPrice;
+        return totalOrderPriceBeforeDiscount - totalDiscountPrice;
     }
 
     public String getStringCommaTotalDiscountPrice() {
@@ -69,6 +73,10 @@ public class EventService {
 
     private int getTotalDiscountPrice() {
         return person.getTotalDiscountPrice();
+    }
+
+    public void setTotalDiscountPrice(int totalDiscountPrice) {
+        person.setTotalDiscountPrice(totalDiscountPrice);
     }
 
     private int getTotalOrderPriceBeforeDiscount() {
@@ -104,7 +112,7 @@ public class EventService {
 
         return menusAndCounts;
     }
-    
+
     private int calculateTotalOrderPriceBeforeDiscount(Map<Menu, Integer> menusAndCounts) {
         int totalPrice = 0;
         for (Menu menu : menus) {
@@ -114,17 +122,13 @@ public class EventService {
         return totalPrice;
     }
 
-    public void setTotalDiscountPrice(int totalDiscountPrice) {
-        person.setTotalDiscountPrice(totalDiscountPrice);
+    public int getDateOfVisit() {
+        return person.getDateOfVisit();
     }
 
     public void setDateOfVisit(String inputDateofVisit) {
         int dateOfVisit = Integer.parseInt(inputDateofVisit);
         person.setDateOfVisit(dateOfVisit);
-    }
-
-    public int getDateOfVisit() {
-        return person.getDateOfVisit();
     }
 
     private void setInitPerson(int totalCount, Map<Menu, Integer> menusAndCounts, int totalOrderPriceBeforeDiscount) {

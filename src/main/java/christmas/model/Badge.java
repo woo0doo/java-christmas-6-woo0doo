@@ -6,16 +6,11 @@ public enum Badge {
     TREE("트리", 10_000),
     SANTA("산타", 20_000);
 
+    private final String BadgeKoreaName;
+    private final int discountPriceRange;
     Badge(String badgeKoreaName, int discountPriceRange) {
         BadgeKoreaName = badgeKoreaName;
         this.discountPriceRange = discountPriceRange;
-    }
-
-    private final String BadgeKoreaName;
-    private final int discountPriceRange;
-
-    public String getBadgeKoreaName() {
-        return BadgeKoreaName;
     }
 
     public static boolean isOverSantaDiscountPriceRange(int totalDiscountPrice) {
@@ -28,5 +23,9 @@ public enum Badge {
 
     public static boolean isOverStarDiscountPriceRange(int totalDiscountPrice) {
         return totalDiscountPrice >= STAR.discountPriceRange;
+    }
+
+    public String getBadgeKoreaName() {
+        return BadgeKoreaName;
     }
 }

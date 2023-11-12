@@ -13,14 +13,12 @@ import static christmas.view.OutputView.*;
 
 public class DiscountService {
 
-    public DiscountService(EventService eventService) {
-        this.eventService = eventService;
-    }
-
     private final EventService eventService;
     int totalDiscountPrice = 0;
     List<String> discountDetailsMessage = new ArrayList<>();
-
+    public DiscountService(EventService eventService) {
+        this.eventService = eventService;
+    }
 
     public List<String> getDiscountDetails() {
         List<Menu> menus = eventService.getMenus();

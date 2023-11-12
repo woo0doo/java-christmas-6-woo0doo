@@ -7,25 +7,36 @@ import static christmas.constant.ErrorConstant.OVER_MAX_COUNT_SIZE_ERROR_MESSAGE
 
 public class Person {
 
-    private int dateOfVisit;
+    private static final int MAX_COUNT_SIZE = 20;
     Map<Menu, Integer> menuAndCount;
     int totalCount;
     int totalOrderPriceBeforeDiscount;
     boolean isPresentedChampagne;
     int totalDiscountPrice;
-
-    private static final int MAX_COUNT_SIZE = 20;
+    private int dateOfVisit;
 
     public int getDateOfVisit() {
         return dateOfVisit;
+    }
+
+    public void setDateOfVisit(int dateOfVisit) {
+        this.dateOfVisit = dateOfVisit;
     }
 
     public Map<Menu, Integer> getMenuAndCount() {
         return menuAndCount;
     }
 
+    public void setMenuAndCount(Map<Menu, Integer> menuAndCount) {
+        this.menuAndCount = menuAndCount;
+    }
+
     public int getTotalOrderPriceBeforeDiscount() {
         return totalOrderPriceBeforeDiscount;
+    }
+
+    public void setTotalOrderPriceBeforeDiscount(int totalOrderPriceBeforeDiscount) {
+        this.totalOrderPriceBeforeDiscount = totalOrderPriceBeforeDiscount;
     }
 
     public boolean getIsPresentedChampagne() {
@@ -36,12 +47,8 @@ public class Person {
         return totalDiscountPrice;
     }
 
-    public void setDateOfVisit(int dateOfVisit) {
-        this.dateOfVisit = dateOfVisit;
-    }
-
-    public void setMenuAndCount(Map<Menu, Integer> menuAndCount) {
-        this.menuAndCount = menuAndCount;
+    public void setTotalDiscountPrice(int totalDiscountPrice) {
+        this.totalDiscountPrice = totalDiscountPrice;
     }
 
     public void setTotalCount(int totalCount) {
@@ -49,19 +56,12 @@ public class Person {
         this.totalCount = totalCount;
     }
 
-    public void setTotalOrderPriceBeforeDiscount(int totalOrderPriceBeforeDiscount) {
-        this.totalOrderPriceBeforeDiscount = totalOrderPriceBeforeDiscount;
-    }
-
     public void setPresentedChampagne(boolean presentedChampagne) {
         isPresentedChampagne = presentedChampagne;
     }
 
-    public void setTotalDiscountPrice(int totalDiscountPrice) {
-        this.totalDiscountPrice = totalDiscountPrice;
-    }
-
     private void validateTotalCountOverMaxCount(int totalCount) {
-        if (totalCount > MAX_COUNT_SIZE) throw new IllegalArgumentException(ERROR_PREFIX + OVER_MAX_COUNT_SIZE_ERROR_MESSAGE);
+        if (totalCount > MAX_COUNT_SIZE)
+            throw new IllegalArgumentException(ERROR_PREFIX + OVER_MAX_COUNT_SIZE_ERROR_MESSAGE);
     }
 }

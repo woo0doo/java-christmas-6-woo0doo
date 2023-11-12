@@ -7,6 +7,14 @@ import java.util.Map;
 
 public class OutputView {
 
+    public static final String ONE_CHAMPAGNE_MESSAGE = "샴페인 1개";
+    public static final String NO_GIFT_MESSAGE = "없음";
+    public static final String CHRISTMAS_D_DAY_DISCOUNT_MESSAGE = "크리스마스 디데이 할인: -";
+    public static final String WEEKDAY_DISCOUNT_MESSAGE = "평일 할인: -";
+    public static final String WEEKEND_DISCOUNT_MESSAGE = "주말 할인: -";
+    public static final String STAR_DISCOUNT_MESSAGE = "특별 할인: -";
+    public static final String GIFT_DISCOUNT_MESSAGE = "증정 이벤트: -";
+    public static final String WON = "원";
     private static final String INTRODUCE_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
     private static final String ASK_DATE_OF_VISIT_MESSAGE = "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
     private static final String ASK_ORDER_MENUS_AND_COUNTS_MESSAGE = "주문하실 메뉴를 메뉴와 개수를 알려 주세요. (e.g. 해산물파스타-2,레드와인-1,초코케이크-1)";
@@ -17,20 +25,11 @@ public class OutputView {
     private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT_MESSAGE = "<할인 전 총주문 금액>";
     private static final String PRICE_WON = "%s원\n";
     private static final String GIFT_MENU_MESSAGE = "<증정 메뉴>";
-    public static final String ONE_CHAMPAGNE_MESSAGE = "샴페인 1개";
     private static final String BENEFITS_DETAILS = "<혜택 내역>";
-    public static final String NO_GIFT_MESSAGE = "없음";
     private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = "<총혜택 금액>";
     private static final String MINUS_SIGN = "-";
     private static final String EXPECT_PAYMENT_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     private static final String EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
-    public static final String CHRISTMAS_D_DAY_DISCOUNT_MESSAGE = "크리스마스 디데이 할인: -";
-    public static final String WEEKDAY_DISCOUNT_MESSAGE = "평일 할인: -";
-    public static final String WEEKEND_DISCOUNT_MESSAGE = "주말 할인: -";
-    public static final String STAR_DISCOUNT_MESSAGE = "특별 할인: -";
-    public static final String GIFT_DISCOUNT_MESSAGE = "증정 이벤트: -";
-    public static final String WON = "원";
-
 
     public void printStartMessage() {
         printIntroduceMessage();
@@ -77,6 +76,7 @@ public class OutputView {
         }
         printBlankLine();
     }
+
     public void printTotalDiscountPrice(String stringCommaTotalDiscountPrice) {
         System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE);
         System.out.printf(MINUS_SIGN + PRICE_WON, stringCommaTotalDiscountPrice);
