@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import static christmas.constant.ErrorConstant.*;
+import static christmas.model.Badge.*;
 import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
@@ -86,6 +87,20 @@ public class EventService {
 
     private int getTotalOrderPriceBeforeDiscount() {
         return person.getTotalOrderPriceBeforeDiscount();
+    }
+
+    public String getEventBadge() {
+        int totalDiscountPrice = getTotalDiscountPrice();
+        if (isOverSantaDiscountPriceRange(totalDiscountPrice))
+            return SANTA.getBadgeKoreaName();
+
+        if (isOverTreeDiscountPriceRange(totalDiscountPrice))
+            return TREE.getBadgeKoreaName();
+
+        if (isOverStarDiscountPriceRange(totalDiscountPrice))
+            return STAR.getBadgeKoreaName();
+
+        return NO_GIFT_MESSAGE;
     }
 
     private Map<Menu, Integer> resolveInputMenusAndCounts(String inputMenusAndCounts) {
