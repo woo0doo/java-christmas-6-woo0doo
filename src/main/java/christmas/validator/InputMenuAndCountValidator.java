@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static christmas.constant.ErrorConstant.*;
-import static christmas.constant.ValidateConstant.checkNotDigit;
+import static christmas.constant.ValidateConstant.isNotDigit;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
 
@@ -23,7 +23,8 @@ public class InputMenuAndCountValidator {
             checkDuplicateMenu(menus, menu);
             containBesidesBeverage(menu.getCourse());
             menus.add(menu);
-            checkNotDigit(separateMenusAndCount.get(1));
+            if (isNotDigit(separateMenusAndCount.get(1)))
+                throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
         }
         checkNotOnlyBeverage(isNotOnlyBeverage);
     }
