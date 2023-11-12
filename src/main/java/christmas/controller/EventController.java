@@ -29,6 +29,12 @@ public class EventController {
         printDiscountDetail();
         printTotalDiscountPrice();
         printExpectPaymentPrice();
+        printEventBadge();
+    }
+
+    private void printEventBadge() {
+        String eventBadge = eventService.getEventBadge();
+        outputView.printEventBadge(eventBadge);
     }
 
     private void printExpectPaymentPrice() {
