@@ -27,12 +27,17 @@ public class InputMenuAndCountValidator {
             containBesidesBeverage(menu.getCourse());
             menus.add(menu);
             String inputCount = separateMenusAndCount.get(1);
-            if (isNotDigit(inputCount))
+            if (isNotDigit(inputCount) || isNotPositive(inputCount))
                 throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
             addCount(inputCount);
         }
         checkNotOnlyBeverage(isNotOnlyBeverage);
         checkTotalCountOverMaxCount(totalCount);
+    }
+
+    private boolean isNotPositive(String inputCount) {
+        int count = convertStringToInt(inputCount);
+        return count<1;
     }
 
     private void addCount(String inputCount) {
