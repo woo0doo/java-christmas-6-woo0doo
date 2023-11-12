@@ -14,12 +14,12 @@ import static christmas.constant.ErrorConstant.*;
 import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
+import static christmas.view.OutputView.NO_GIFT_MESSAGE;
 
 public class EventService {
 
     private static final int BASED_ON_OVER_PRICE_GIVE_GIFT_MENU = 120_000;
     private static final String ONE_CHAMPAGNE_MESSAGE = "샴페인 1개";
-    private static final String NO_GIFT_MESSAGE = "없음";
     private static final int STAR_DAY_DISCOUNT_PRICE = 1000;
     private static final int CHAMPAGNE_PRICE = 25000;
 
