@@ -71,6 +71,7 @@ public class EventController {
     private void MenusAndCountsProcess() {
         printAskOrderMenusAndCounts();
         inputOrdersAndCountsAndInitEvent();
+        eventService.initEvent(inputMenusAndCounts);
     }
 
     private void printEventBenefitPreviewMessage() {
@@ -81,9 +82,7 @@ public class EventController {
         try {
             inputMenusAndCounts = inputView.inputMenusAndCounts();
             validateService.validateInputMenusAndCounts(inputMenusAndCounts);
-            eventService.initEvent(inputMenusAndCounts);
         } catch (IllegalArgumentException e) {
-            eventService.initMenus();
             System.out.println(e.getMessage());
             inputOrdersAndCountsAndInitEvent();
         }
@@ -96,6 +95,7 @@ public class EventController {
     private void startAndDateOfVisitProcess() {
         printStartMessage();
         inputDateOfVisit();
+        eventService.setDateOfVisit(inputDateOfVisit);
     }
 
     private void printStartMessage() {
@@ -106,7 +106,6 @@ public class EventController {
         try {
             inputDateOfVisit = inputView.inputDateOfVisit();
             validateService.validateInputDateOfVisit(inputDateOfVisit);
-            eventService.setDateOfVisit(inputDateOfVisit);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             inputDateOfVisit();
