@@ -64,6 +64,17 @@ public class EventService {
         return NO_GIFT_MESSAGE;
     }
 
+    public String getStringCommaExpectPaymentPrice() {
+        int expectPaymentPrice = getExpectPaymentPrice();
+        return convertIntPriceToStringCommaPrice(expectPaymentPrice);
+    }
+
+    private int getExpectPaymentPrice()  {
+        int totalOrderPriceBeforeDiscount = person.getTotalOrderPriceBeforeDiscount();
+        int totalDiscountPrice = person.getTotalDiscountPrice();
+        return totalOrderPriceBeforeDiscount-totalDiscountPrice;
+    }
+
     public String getStringCommaTotalDiscountPrice() {
         int totalDiscountPrice = getTotalDiscountPrice();
         return convertIntPriceToStringCommaPrice(totalDiscountPrice);
