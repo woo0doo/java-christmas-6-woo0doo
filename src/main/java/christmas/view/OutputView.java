@@ -17,12 +17,19 @@ public class OutputView {
     private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT_MESSAGE = "<할인 전 총주문 금액>";
     private static final String PRICE_WON = "%s원\n";
     private static final String GIFT_MENU_MESSAGE = "<증정 메뉴>";
+    public static final String ONE_CHAMPAGNE_MESSAGE = "샴페인 1개";
     private static final String BENEFITS_DETAILS = "<혜택 내역>";
     public static final String NO_GIFT_MESSAGE = "없음";
     private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = "<총혜택 금액>";
     private static final String MINUS_SIGN = "-";
     private static final String EXPECT_PAYMENT_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     private static final String EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
+    public static final String CHRISTMAS_D_DAY_DISCOUNT_MESSAGE = "크리스마스 디데이 할인: -";
+    public static final String WEEKDAY_DISCOUNT_MESSAGE = "평일 할인: -";
+    public static final String WEEKEND_DISCOUNT_MESSAGE = "주말 할인: -";
+    public static final String STAR_DISCOUNT_MESSAGE = "특별 할인: -";
+    public static final String GIFT_DISCOUNT_MESSAGE = "증정 이벤트: -";
+    public static final String WON = "원";
 
 
     public void printStartMessage() {
