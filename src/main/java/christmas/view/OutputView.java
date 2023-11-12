@@ -15,10 +15,12 @@ public class OutputView {
     private static final String ORDER_MENU_MESSAGE = "<주문 메뉴>";
     private static final String ORDER_MENU_AND_COUNT = "%s %d개\n";
     private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT_MESSAGE = "<할인 전 총주문 금액>";
-    private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT = "%s원\n";
+    private static final String PRICE_WON = "%s원\n";
     private static final String GIFT_MENU_MESSAGE = "<증정 메뉴>";
     private static final String BENEFITS_DETAILS = "<혜택 내역>";
     public static final String NO_GIFT_MESSAGE = "없음";
+    private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = "<총혜택 금액>";
+    private static final String MINUS_SIGN = "-";
 
 
     public void printStartMessage() {
@@ -45,7 +47,7 @@ public class OutputView {
 
     public void printTotalOrderPriceBeforeDiscount(String stringCommaTotalOrderPriceBeforeDiscount) {
         System.out.println(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT_MESSAGE);
-        System.out.printf(TOTAL_ORDER_PRICE_BEFORE_DISCOUNT, stringCommaTotalOrderPriceBeforeDiscount);
+        System.out.printf(PRICE_WON, stringCommaTotalOrderPriceBeforeDiscount);
         printBlankLine();
     }
 
@@ -64,6 +66,11 @@ public class OutputView {
         for (String discountDetail : discountDetails) {
             System.out.println(discountDetail);
         }
+        printBlankLine();
+    }
+    public void printTotalDiscountPrice(String stringCommaTotalDiscountPrice) {
+        System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE);
+        System.out.printf(MINUS_SIGN + PRICE_WON, stringCommaTotalDiscountPrice);
         printBlankLine();
     }
 
