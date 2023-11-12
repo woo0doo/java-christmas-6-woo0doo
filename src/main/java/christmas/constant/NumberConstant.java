@@ -4,6 +4,7 @@ public class NumberConstant {
 
     public static final int ZERO_VALUE = 0;
     public static final int ONE_VALUE = 1;
+    public static final int MAX_COUNT_SIZE = 20;
     public static final int CHRISTMAS_DAY = 25;
     public static final int HUNDRED_VALUE = 100;
     public static final int THOUSAND_VALUE = 1000;
