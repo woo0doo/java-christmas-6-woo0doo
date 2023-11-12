@@ -18,6 +18,8 @@ public class OutputView {
     private static final String TOTAL_ORDER_PRICE_BEFORE_DISCOUNT = "%s원\n";
     private static final String GIFT_MENU_MESSAGE = "<증정 메뉴>";
     private static final String BENEFITS_DETAILS = "<혜택 내역>";
+    public static final String NO_GIFT_MESSAGE = "없음";
+
 
     public void printStartMessage() {
         printIntroduceMessage();
@@ -55,6 +57,10 @@ public class OutputView {
 
     public void printDiscountDetail(List<String> discountDetails) {
         System.out.println(BENEFITS_DETAILS);
+        if (discountDetails.size() == 0) {
+            System.out.println(NO_GIFT_MESSAGE);
+            return;
+        }
         for (String discountDetail : discountDetails) {
             System.out.println(discountDetail);
         }
