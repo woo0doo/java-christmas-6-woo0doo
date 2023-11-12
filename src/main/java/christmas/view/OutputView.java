@@ -22,6 +22,7 @@ public class OutputView {
     private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = "<총혜택 금액>";
     private static final String MINUS_SIGN = "-";
     private static final String EXPECT_PAYMENT_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
+    private static final String EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
 
 
     public void printStartMessage() {
@@ -79,6 +80,11 @@ public class OutputView {
         System.out.println(EXPECT_PAYMENT_PRICE_AFTER_DISCOUNT_MESSAGE);
         System.out.printf(PRICE_WON, stringCommaExpectPaymentPrice);
         printBlankLine();
+    }
+
+    public void printEventBadge(String eventBadge) {
+        System.out.println(EVENT_BADGE_MESSAGE);
+        System.out.println(eventBadge);
     }
 
     private void printBlankLine() {
