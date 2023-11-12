@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.model.Menu;
+import christmas.service.DiscountService;
 import christmas.service.EventService;
 import christmas.service.ValidateService;
 import christmas.view.InputView;
@@ -15,6 +16,7 @@ public class EventController {
     private final OutputView outputView = new OutputView();
     private final ValidateService validateService = new ValidateService();
     private final EventService eventService = new EventService();
+    private final DiscountService discountService = new DiscountService(eventService);
 
     private String inputDateOfVisit;
     private String inputMenusAndCounts;
@@ -48,7 +50,7 @@ public class EventController {
     }
 
     private void printDiscountDetail() {
-        List<String> discountDetails = eventService.getDiscountDetails();
+        List<String> discountDetails = discountService.getDiscountDetails();
         outputView.printDiscountDetail(discountDetails);
     }
 
