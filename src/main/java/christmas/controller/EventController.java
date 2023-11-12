@@ -28,6 +28,12 @@ public class EventController {
         printGiftMenu();
         printDiscountDetail();
         printTotalDiscountPrice();
+        printExpectPaymentPrice();
+    }
+
+    private void printExpectPaymentPrice() {
+        String stringCommaExpectPaymentPrice = eventService.getStringCommaExpectPaymentPrice();
+        outputView.printExpectPaymentPrice(stringCommaExpectPaymentPrice);
     }
 
     private void printTotalDiscountPrice() {
