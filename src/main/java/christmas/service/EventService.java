@@ -2,7 +2,6 @@ package christmas.service;
 
 import christmas.model.December;
 import christmas.model.Menu;
-import christmas.model.Menu.Course;
 import christmas.model.Person;
 
 import java.util.ArrayList;
@@ -10,7 +9,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static christmas.constant.ErrorConstant.*;
 import static christmas.model.Badge.*;
 import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
 import static christmas.util.SeparationUtil.separateMenus;
@@ -29,18 +27,12 @@ public class EventService {
     int totalDiscountPrice = 0;
     List<String> discountDetailsMessage = new ArrayList<>();
 
-    boolean isNotOnlyBeverage = false;
     private List<Menu> menus = new ArrayList<>();
 
     public void initEvent(String inputMenusAndCounts) {
         Map<Menu, Integer> menusAndCounts = resolveInputMenusAndCounts(inputMenusAndCounts);
-        checkNotOnlyBeverage(isNotOnlyBeverage);
         int totalOrderPriceBeforeDiscount = calculateTotalOrderPriceBeforeDiscount(menusAndCounts);
         setInitPerson(totalCount, menusAndCounts, totalOrderPriceBeforeDiscount);
-    }
-
-    public void initMenus() {
-        menus = new ArrayList<>();
     }
 
     public List<Menu> getMenus() {
@@ -110,9 +102,7 @@ public class EventService {
         for (String menusAndCount : separateMenus) {
             List<String> separateMenusAndCount = separateMenusAndCount(menusAndCount);
             Menu menu = Menu.StringToEnum(separateMenusAndCount.get(0)); //menu 이름
-            checkDuplicateMenu(menu);
             menus.add(menu);
-            checkContainBesidesBeverage(menu.getCourse());
             int count = Integer.parseInt(separateMenusAndCount.get(1)); //menu count
             totalCount += count;
             menusAndCounts.put(menu, count);
@@ -128,21 +118,6 @@ public class EventService {
             totalPrice += menu.getPrice() * count;
         }
         return totalPrice;
-    }
-
-    private void checkDuplicateMenu(Menu menu) {
-        if (menus.contains(menu))
-            throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
-    }
-
-    private void checkContainBesidesBeverage(Course course) {
-        if (!course.equals(Course.BEVERAGE))
-            isNotOnlyBeverage = true;
-    }
-
-    private void checkNotOnlyBeverage(boolean isNotOnlyBeverage) {
-        if (!isNotOnlyBeverage)
-            throw new IllegalArgumentException(ERROR_PREFIX + ONLY_BEVERAGE_ERROR_MESSAGE);
     }
 
     public void setDateOfVisit(String inputDateofVisit) {
