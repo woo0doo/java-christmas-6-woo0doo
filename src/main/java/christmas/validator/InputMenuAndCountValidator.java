@@ -32,7 +32,7 @@ public class InputMenuAndCountValidator {
             addCount(inputCount);
         }
         checkNotOnlyBeverage(isNotOnlyBeverage);
-        checkTotalCountOverMaxCount(totalCount);
+        checkTotalCountLessMaxCount(totalCount);
     }
 
     private boolean isNotPositive(String inputCount) {
@@ -65,7 +65,7 @@ public class InputMenuAndCountValidator {
         this.menus = new ArrayList<>();
     }
 
-    private void checkTotalCountOverMaxCount(int totalCount) {
+    private void checkTotalCountLessMaxCount(int totalCount) {
         if (totalCount > MAX_COUNT_SIZE)
             throw new IllegalArgumentException(ERROR_PREFIX + OVER_MAX_COUNT_SIZE_ERROR_MESSAGE);
     }
