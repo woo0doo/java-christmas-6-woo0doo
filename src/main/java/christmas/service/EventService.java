@@ -10,7 +10,6 @@ import java.util.Map;
 
 import static christmas.constant.NumberConstant.BASED_ON_OVER_PRICE_GIVE_GIFT_MENU;
 import static christmas.model.Badge.*;
-import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
 import static christmas.view.OutputView.NO_GIFT_MESSAGE;
@@ -19,13 +18,12 @@ import static christmas.view.OutputView.ONE_CHAMPAGNE_MESSAGE;
 public class EventService {
 
     private final Person person = new Person();
-    int totalCount = 0;
     private final List<Menu> menus = new ArrayList<>();
 
     public void initEvent(String inputMenusAndCounts) {
         Map<Menu, Integer> menusAndCounts = resolveInputMenusAndCounts(inputMenusAndCounts);
         int totalOrderPriceBeforeDiscount = calculateTotalOrderPriceBeforeDiscount(menusAndCounts);
-        setInitPerson(totalCount, menusAndCounts, totalOrderPriceBeforeDiscount);
+        setInitPerson(menusAndCounts, totalOrderPriceBeforeDiscount);
     }
 
     public List<Menu> getMenus() {
@@ -42,8 +40,7 @@ public class EventService {
 
 
     public String getStringCommaTotalOrderPriceBeforeDiscount() {
-        int totalOrderPriceBeforeDiscount = getTotalOrderPriceBeforeDiscount();
-        return convertIntPriceToStringCommaPrice(totalOrderPriceBeforeDiscount);
+        return person.getStringCommaTotalOrderPriceBeforeDiscount();
     }
 
     public String getGiftMenu() {
@@ -56,19 +53,11 @@ public class EventService {
     }
 
     public String getStringCommaExpectPaymentPrice() {
-        int expectPaymentPrice = getExpectPaymentPrice();
-        return convertIntPriceToStringCommaPrice(expectPaymentPrice);
-    }
-
-    private int getExpectPaymentPrice() {
-        int totalOrderPriceBeforeDiscount = person.getTotalOrderPriceBeforeDiscount();
-        int totalDiscountPrice = person.getTotalDiscountPrice();
-        return totalOrderPriceBeforeDiscount - totalDiscountPrice;
+        return person.getStringCommaExpectPaymentPrice();
     }
 
     public String getStringCommaTotalDiscountPrice() {
-        int totalDiscountPrice = getTotalDiscountPrice();
-        return convertIntPriceToStringCommaPrice(totalDiscountPrice);
+        return person.getStringCommaTotalDiscountPrice();
     }
 
     private int getTotalDiscountPrice() {
@@ -77,10 +66,6 @@ public class EventService {
 
     public void setTotalDiscountPrice(int totalDiscountPrice) {
         person.setTotalDiscountPrice(totalDiscountPrice);
-    }
-
-    private int getTotalOrderPriceBeforeDiscount() {
-        return person.getTotalOrderPriceBeforeDiscount();
     }
 
     public String getEventBadge() {
@@ -106,7 +91,6 @@ public class EventService {
             Menu menu = Menu.stringToEnum(separateMenusAndCount.get(0)); //menu 이름
             menus.add(menu);
             int count = Integer.parseInt(separateMenusAndCount.get(1)); //menu count
-            totalCount += count;
             menusAndCounts.put(menu, count);
         }
 
@@ -131,8 +115,7 @@ public class EventService {
         person.setDateOfVisit(dateOfVisit);
     }
 
-    private void setInitPerson(int totalCount, Map<Menu, Integer> menusAndCounts, int totalOrderPriceBeforeDiscount) {
-        person.setTotalCount(totalCount);
+    private void setInitPerson(Map<Menu, Integer> menusAndCounts, int totalOrderPriceBeforeDiscount) {
         person.setMenuAndCount(menusAndCounts);
         person.setTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
     }
