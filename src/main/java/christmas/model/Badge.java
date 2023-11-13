@@ -9,7 +9,7 @@ public enum Badge {
     private final String BadgeKoreaName;
     private final int discountPriceRange;
     Badge(String badgeKoreaName, int discountPriceRange) {
-        BadgeKoreaName = badgeKoreaName;
+        this.BadgeKoreaName = badgeKoreaName;
         this.discountPriceRange = discountPriceRange;
     }
 
@@ -18,11 +18,11 @@ public enum Badge {
     }
 
     public static boolean isOverTreeDiscountPriceRange(int totalDiscountPrice) {
-        return totalDiscountPrice >= TREE.discountPriceRange;
+        return totalDiscountPrice >= TREE.discountPriceRange && totalDiscountPrice < SANTA.discountPriceRange;
     }
 
     public static boolean isOverStarDiscountPriceRange(int totalDiscountPrice) {
-        return totalDiscountPrice >= STAR.discountPriceRange;
+        return totalDiscountPrice >= STAR.discountPriceRange && totalDiscountPrice < TREE.discountPriceRange;
     }
 
     public String getBadgeKoreaName() {
