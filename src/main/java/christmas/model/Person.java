@@ -2,13 +2,17 @@ package christmas.model;
 
 import java.util.Map;
 
+import static christmas.constant.NumberConstant.CHAMPAGNE_PRICE;
+import static christmas.constant.NumberConstant.ZERO_VALUE;
+import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
+import static christmas.view.OutputView.*;
+
 public class Person {
 
-    Map<Menu, Integer> menuAndCount;
-    int totalCount;
-    int totalOrderPriceBeforeDiscount;
-    boolean isPresentedChampagne;
-    int totalDiscountPrice;
+    private Map<Menu, Integer> menuAndCount;
+    private int totalOrderPriceBeforeDiscount;
+    private boolean isPresentedChampagne;
+    private int totalDiscountPrice;
     private int dateOfVisit;
 
     public int getDateOfVisit() {
@@ -47,11 +51,27 @@ public class Person {
         this.totalDiscountPrice = totalDiscountPrice;
     }
 
-    public void setTotalCount(int totalCount) {
-        this.totalCount = totalCount;
-    }
-
     public void setPresentedChampagne(boolean presentedChampagne) {
         isPresentedChampagne = presentedChampagne;
+    }
+
+    public int getExpectPaymentPrice() {
+        if (isPresentedChampagne)
+            return totalOrderPriceBeforeDiscount - totalDiscountPrice + CHAMPAGNE_PRICE;
+        return totalOrderPriceBeforeDiscount - totalDiscountPrice;
+    }
+
+    public String getStringCommaTotalDiscountPrice() {
+        if (totalDiscountPrice == ZERO_VALUE) return STRING_ZERO_VALUE;
+        return MINUS_SIGN +convertIntPriceToStringCommaPrice(totalDiscountPrice);
+    }
+
+    public String getStringCommaExpectPaymentPrice() {
+        int expectPaymentPrice = getExpectPaymentPrice();
+        return convertIntPriceToStringCommaPrice(expectPaymentPrice);
+    }
+
+    public String getStringCommaTotalOrderPriceBeforeDiscount() {
+        return convertIntPriceToStringCommaPrice(totalOrderPriceBeforeDiscount);
     }
 }
