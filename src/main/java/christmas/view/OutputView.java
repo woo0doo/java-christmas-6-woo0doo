@@ -27,7 +27,8 @@ public class OutputView {
     private static final String GIFT_MENU_MESSAGE = "<증정 메뉴>";
     private static final String BENEFITS_DETAILS = "<혜택 내역>";
     private static final String TOTAL_DISCOUNT_PRICE_MESSAGE = "<총혜택 금액>";
-    private static final String MINUS_SIGN = "-";
+    public static final String MINUS_SIGN = "-";
+    public static final String STRING_ZERO_VALUE = "0";
     private static final String EXPECT_PAYMENT_PRICE_AFTER_DISCOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     private static final String EVENT_BADGE_MESSAGE = "<12월 이벤트 배지>";
 
@@ -69,6 +70,7 @@ public class OutputView {
         System.out.println(BENEFITS_DETAILS);
         if (discountDetails.size() == 0) {
             System.out.println(NO_GIFT_MESSAGE);
+            printBlankLine();
             return;
         }
         for (String discountDetail : discountDetails) {
@@ -79,7 +81,7 @@ public class OutputView {
 
     public void printTotalDiscountPrice(String stringCommaTotalDiscountPrice) {
         System.out.println(TOTAL_DISCOUNT_PRICE_MESSAGE);
-        System.out.printf(MINUS_SIGN + PRICE_WON, stringCommaTotalDiscountPrice);
+        System.out.printf(PRICE_WON, stringCommaTotalDiscountPrice);
         printBlankLine();
     }
 
