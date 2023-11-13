@@ -22,7 +22,7 @@ public class InputMenuAndCountValidator {
         List<String> menusAndCounts = separateMenus(inputMenusAndCounts);
         for (String menusAndCount : menusAndCounts) {
             List<String> separateMenusAndCount = separateMenusAndCount(menusAndCount);
-            Menu menu = Menu.StringToEnum(separateMenusAndCount.get(0));
+            Menu menu = Menu.stringToEnum(separateMenusAndCount.get(0));
             checkDuplicateMenu(menus, menu);
             containBesidesBeverage(menu.getCourse());
             menus.add(menu);

@@ -103,7 +103,7 @@ public class EventService {
 
         for (String menusAndCount : separateMenus) {
             List<String> separateMenusAndCount = separateMenusAndCount(menusAndCount);
-            Menu menu = Menu.StringToEnum(separateMenusAndCount.get(0)); //menu 이름
+            Menu menu = Menu.stringToEnum(separateMenusAndCount.get(0)); //menu 이름
             menus.add(menu);
             int count = Integer.parseInt(separateMenusAndCount.get(1)); //menu count
             totalCount += count;

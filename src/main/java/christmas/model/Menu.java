@@ -28,7 +28,7 @@ public enum Menu {
         this.price = price;
     }
 
-    public static Menu StringToEnum(String menu) {
+    public static Menu stringToEnum(String menu) {
         if (menu.equals(BUTTON_MUSHROOM_SOUP.menuKoreaName)) return BUTTON_MUSHROOM_SOUP;
         else if (menu.equals(TAPAS.menuKoreaName)) return TAPAS;
         else if (menu.equals(CAESAR_SALAD.menuKoreaName)) return CAESAR_SALAD;
