@@ -42,7 +42,7 @@ public class Person {
     }
 
     public boolean isPresentedChampagne() {
-        return totalOrderPriceBeforeDiscount > BASED_ON_OVER_PRICE_GIVE_GIFT_MENU;
+        return totalOrderPriceBeforeDiscount >= BASED_ON_OVER_PRICE_GIVE_GIFT_MENU;
     }
 
     public int getExpectPaymentPrice() {
