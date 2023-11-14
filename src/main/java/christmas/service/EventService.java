@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static christmas.constant.NumberConstant.BASED_ON_OVER_PRICE_GIVE_GIFT_MENU;
+import static christmas.constant.NumberConstant.ZERO_VALUE;
 import static christmas.model.Badge.*;
 import static christmas.util.SeparationUtil.separateMenus;
 import static christmas.util.SeparationUtil.separateMenusAndCount;
@@ -35,7 +35,7 @@ public class EventService {
     }
 
     public boolean getIsPresentedChampagne() {
-        return person.getIsPresentedChampagne();
+        return person.isPresentedChampagne();
     }
 
 
@@ -44,11 +44,9 @@ public class EventService {
     }
 
     public String getGiftMenu() {
-        if (person.getTotalOrderPriceBeforeDiscount() > BASED_ON_OVER_PRICE_GIVE_GIFT_MENU) {
-            person.setPresentedChampagne(true);
+        if (person.isPresentedChampagne()) {
             return ONE_CHAMPAGNE_MESSAGE;
         }
-        person.setPresentedChampagne(false);
         return NO_GIFT_MESSAGE;
     }
 
@@ -98,7 +96,7 @@ public class EventService {
     }
 
     private int calculateTotalOrderPriceBeforeDiscount(Map<Menu, Integer> menusAndCounts) {
-        int totalPrice = 0;
+        int totalPrice = ZERO_VALUE;
         for (Menu menu : menus) {
             Integer count = menusAndCounts.get(menu);
             totalPrice += menu.getPrice() * count;
@@ -110,13 +108,17 @@ public class EventService {
         return person.getDateOfVisit();
     }
 
-    public void setDateOfVisit(String inputDateofVisit) {
-        int dateOfVisit = Integer.parseInt(inputDateofVisit);
+    public void setDateOfVisit(String inputDateOfVisit) {
+        int dateOfVisit = Integer.parseInt(inputDateOfVisit);
         person.setDateOfVisit(dateOfVisit);
     }
 
     private void setInitPerson(Map<Menu, Integer> menusAndCounts, int totalOrderPriceBeforeDiscount) {
         person.setMenuAndCount(menusAndCounts);
         person.setTotalOrderPriceBeforeDiscount(totalOrderPriceBeforeDiscount);
+    }
+
+    public boolean isEventTargetPerson() {
+        return person.isEventTargetPerson();
     }
 }
