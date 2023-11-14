@@ -16,6 +16,7 @@ public class InputMenuAndCountValidatorTest {
     public void inputMenuAndCountSuccess() throws Exception {
         //given
         String inputMenuAndCount = "바비큐립-1,레드와인-1";
+
         //when
         assertDoesNotThrow(() -> inputMenuAndCountValidator.validateMenusAndCounts(inputMenuAndCount));
     }
@@ -24,6 +25,7 @@ public class InputMenuAndCountValidatorTest {
     public void inputMenuAndCountNotExistMenu() throws Exception {
         //given
         String inputMenuAndCount = "먹을거-1";
+
         //when - then
         assertThatThrownBy(() -> inputMenuAndCountValidator.validateMenusAndCounts(inputMenuAndCount))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -34,7 +36,7 @@ public class InputMenuAndCountValidatorTest {
     @DisplayName("메뉴와 개수 입력 - 실패(맞지 않는 형식)")
     public void inputMenuAndCountNotCorrectFormat() throws Exception {
         //given
-        String inputMenuAndCount = "먹을거 하나";
+        String inputMenuAndCount = "바비큐립-1-1";
 
         //when - then
         assertThatThrownBy(() -> inputMenuAndCountValidator.validateMenusAndCounts(inputMenuAndCount))
