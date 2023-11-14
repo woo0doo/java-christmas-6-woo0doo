@@ -21,6 +21,9 @@ public class DiscountService {
     }
 
     public List<String> getDiscountDetails() {
+        if (!eventService.isEventTargetPerson()) {
+            return List.of();
+        }
         List<Menu> menus = eventService.getMenus();
         int dateOfVisit = eventService.getDateOfVisit();
         Map<Menu, Integer> menusAndCounts = eventService.getPersonMenusAndCounts();
