@@ -22,17 +22,27 @@ public class InputMenuAndCountValidator {
         List<String> menusAndCounts = separateMenus(inputMenusAndCounts);
         for (String menusAndCount : menusAndCounts) {
             List<String> separateMenusAndCount = separateMenusAndCount(menusAndCount);
+            validateSeparateMenusAndCountSize(separateMenusAndCount);
             Menu menu = Menu.stringToEnum(separateMenusAndCount.get(0));
             checkDuplicateMenu(menus, menu);
             containBesidesBeverage(menu.getCourse());
             menus.add(menu);
             String inputCount = separateMenusAndCount.get(1);
-            if (isNotDigit(inputCount) || isNotPositive(inputCount))
-                throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
+            validateInputCount(inputCount);
             addCount(inputCount);
         }
         checkNotOnlyBeverage(isNotOnlyBeverage);
         checkTotalCountLessMaxCount(totalCount);
+    }
+
+    private void validateSeparateMenusAndCountSize(List<String> separateMenusAndCount) {
+        if (separateMenusAndCount.size() != 2)
+            throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
+    }
+
+    private void validateInputCount(String inputCount) {
+        if (isNotDigit(inputCount) || isNotPositive(inputCount))
+            throw new IllegalArgumentException(ERROR_PREFIX + VALIDATE_CORRECT_MENU_ERROR_MESSAGE);
     }
 
     private boolean isNotPositive(String inputCount) {
