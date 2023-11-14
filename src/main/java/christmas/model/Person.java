@@ -2,8 +2,7 @@ package christmas.model;
 
 import java.util.Map;
 
-import static christmas.constant.NumberConstant.CHAMPAGNE_PRICE;
-import static christmas.constant.NumberConstant.ZERO_VALUE;
+import static christmas.constant.NumberConstant.*;
 import static christmas.util.ConvertUtil.convertIntPriceToStringCommaPrice;
 import static christmas.view.OutputView.*;
 
@@ -11,7 +10,6 @@ public class Person {
 
     private Map<Menu, Integer> menuAndCount;
     private int totalOrderPriceBeforeDiscount;
-    private boolean isPresentedChampagne;
     private int totalDiscountPrice;
     private int dateOfVisit;
 
@@ -31,16 +29,8 @@ public class Person {
         this.menuAndCount = menuAndCount;
     }
 
-    public int getTotalOrderPriceBeforeDiscount() {
-        return totalOrderPriceBeforeDiscount;
-    }
-
     public void setTotalOrderPriceBeforeDiscount(int totalOrderPriceBeforeDiscount) {
         this.totalOrderPriceBeforeDiscount = totalOrderPriceBeforeDiscount;
-    }
-
-    public boolean getIsPresentedChampagne() {
-        return isPresentedChampagne;
     }
 
     public int getTotalDiscountPrice() {
@@ -51,12 +41,12 @@ public class Person {
         this.totalDiscountPrice = totalDiscountPrice;
     }
 
-    public void setPresentedChampagne(boolean presentedChampagne) {
-        isPresentedChampagne = presentedChampagne;
+    public boolean isPresentedChampagne() {
+        return totalOrderPriceBeforeDiscount > BASED_ON_OVER_PRICE_GIVE_GIFT_MENU;
     }
 
     public int getExpectPaymentPrice() {
-        if (isPresentedChampagne)
+        if (isPresentedChampagne())
             return totalOrderPriceBeforeDiscount - totalDiscountPrice + CHAMPAGNE_PRICE;
         return totalOrderPriceBeforeDiscount - totalDiscountPrice;
     }
@@ -73,5 +63,9 @@ public class Person {
 
     public String getStringCommaTotalOrderPriceBeforeDiscount() {
         return convertIntPriceToStringCommaPrice(totalOrderPriceBeforeDiscount);
+    }
+
+    public boolean isEventTargetPerson() {
+        return totalOrderPriceBeforeDiscount >= TEN_THOUSAND;
     }
 }
